@@ -1,12 +1,15 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    margin: auto;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +24,94 @@ input,
 select,
 textarea {
     max-width: 280px;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/*Home Page*/
+
+.jumbotron {
+    /*background-color: #f4511e; Orange */
+    background-image: url("Images/homepagebg.jpg");
+    color: #ffffff;
+    padding: 100px 25px;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.bg-grey {
+    background-color: #f6f6f6;
+}
+
+.container-fluid {
+    margin: 50px;
+    padding: 60px 50px;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.logo-small {
+    color: #05015c;
+    font-size: 50px;
+}
+
+.logo {
+    color: #05015c;
+    font-size: 200px;
+}
+
+.col-md-4 {
+    align-items: flex-end;
+}
+
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+}
+
+    .thumbnail img {
+        width: 100%;
+        height: 300px;
+        margin-bottom: 10px;
+    }
+/***Navbar*/
+.navbar {
+    margin-bottom: 0;
+    background-color: #05015c;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+    .navbar li a, .navbar .navbar-brand {
+        color: #fff !important;
+    }
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #000000 !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/***Footer***/
+footer {
+    background-color: #fff !important;
+    color: #000000 !important;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+@media screen and (max-width: 768px) {
+    .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+    }
 }
