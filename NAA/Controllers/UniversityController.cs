@@ -1,9 +1,12 @@
 ﻿using NAA.Data.Models.Domain;
+using NAA.Data.Repository;
 using NAA.Services.IService;
 using NAA.Services.Service;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,10 +15,11 @@ namespace NAA.Controllers
     public class UniversityController : Controller
     {
         private IUniversityService universityService;
-
+        private NAAContext context;
         public UniversityController()
         {
             universityService = new UniversityService();
+            context = new NAAContext();
         }
         // GET: University
         public ActionResult GetUniversities() 
@@ -58,25 +62,33 @@ namespace NAA.Controllers
         }
 
         // GET: University/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Application application = context.Applications.Find(id);
+            if (application == null)
+            {
+                return HttpNotFound();
+            }
+            return View(application);
         }
 
-        // POST: University/Edit/5
+        // POST: /Movies/Edit/5
+        
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ApplicationID,Course,Statement,TeacherContact,TeacherReference,Offer,Firm")] Application application) 
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                context.Entry(application).State = EntityState.Modified;
+                context.SaveChanges();
+                return RedirectToAction("GetUniversities", "University");
             }
-            catch
-            {
-                return View();
-            }
+            return View(application);
         }
 
         // GET: University/Delete/5

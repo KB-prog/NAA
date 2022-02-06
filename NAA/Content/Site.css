@@ -72,6 +72,10 @@ textarea {
         height: 300px;
         margin-bottom: 10px;
     }
+
+.stylecontainer {
+    margin: 2%;
+}
 /***Navbar*/
 .navbar {
     margin-bottom: 0;

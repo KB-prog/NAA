@@ -13,5 +13,8 @@ namespace NAA.Data.IDAO
         void AddApplicationToCollection(Application application, string userId, NAAContext context);
         void AddUniversityToCollection(University university, string userId, NAAContext context);
         void AddCourseToCollection(Course course, string userId, NAAContext context);
+        void RemoveApplicationFromCollection(Application application, string userId, NAAContext context);
+        void RemoveUniversityFromCollection(University university, string userId, NAAContext context);
+        void RemoveCourseFromCollection(Course course, string userId, NAAContext context); 
     }
 }

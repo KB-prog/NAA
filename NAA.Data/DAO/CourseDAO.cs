@@ -39,5 +39,10 @@ namespace NAA.Data.DAO
             context.Courses.Include(g => g.Applications).ToList();
             return context.Courses.Find(id);
         }
+
+        public void RemoveApplicationFromCollection(Application application, Course course, NAAContext context)
+        {
+            context.Courses.Find(course.CourseID).Applications.Remove(application);
+        }
     }
 }

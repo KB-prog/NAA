@@ -1,11 +1,14 @@
 ﻿using Forest.Controllers;
 using NAA.Data.Models.Domain;
+using NAA.Data.Repository;
 using NAA.Services.IService;
 using NAA.Services.Models;
 using NAA.Services.Service;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,12 +19,14 @@ namespace NAA.Controllers
         private IApplicationService applicationService;
         private IUniversityService universityService;
         private ICourseService courseService;
+        private NAAContext context;
 
         public ApplicationAdminController()
         {
             applicationService = new ApplicationService();
             universityService = new UniversityService();
             courseService = new CourseService();
+            context = new NAAContext();
         }
         // GET: ApplicationAdmin
         public ActionResult GetApplications()
@@ -56,7 +61,6 @@ namespace NAA.Controllers
                 //Redirect to a different page/controller
                 //return RedirectToAction("GetUniversities", "University");
                 return RedirectToAction("GetApplications", "ApplicationAdmin");
-                //return RedirectToAction("GetGenre", "Genre", new { id = musicGenreArtist.Genre});
 
             }
             catch
@@ -65,43 +69,60 @@ namespace NAA.Controllers
             }
         }
 
-        // GET: ApplicationAdmin/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Application application = context.Applications.Find(id);
+            if (application == null)
+            {
+                return HttpNotFound();
+            }
+            return View(application);
         }
 
-        // POST: ApplicationAdmin/Edit/5
+        // POST: /Movies/Edit/5
+
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ApplicationID,Course,Statement,TeacherContact,TeacherReference,Offer,Firm")] Application application)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                context.Entry(application).State = EntityState.Modified;
+                context.SaveChanges();
+                return RedirectToAction("GetApplications", "ApplicationAdmin");
             }
-            catch
-            {
-                return View();
-            }
+            return View(application);
         }
 
         // GET: ApplicationAdmin/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteApplication(int applicationId)
         {
-            return View();
+            Application application = new Application();
+            if (context.Applications.Any(x =>x.ApplicationID == applicationId && x.Offer == "Processing"))
+            {
+                return View(applicationService.GetApplication(applicationId));
+            }
+            else
+            {
+                TempData["AlertMessage"] = "You cannot Delete an Application that has already made an offer";
+                return RedirectToAction("GetApplications", "ApplicationAdmin");
+            }
         }
 
         // POST: ApplicationAdmin/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult DeleteApplication(int applicationId, Application application)  
         {
             try
-            {
-                // TODO: Add delete logic here
+            {            
+               applicationService.DeleteApplication(applicationId, "mo");
 
-                return RedirectToAction("Index");
+               return RedirectToAction("GetApplications", "ApplicationAdmin");
+                            
             }
             catch
             {

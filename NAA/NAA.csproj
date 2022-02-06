@@ -247,6 +247,9 @@
     <Content Include="Views\University\GetApplications.cshtml" />
     <Content Include="Views\ApplicationAdmin\AddApplication.cshtml" />
     <Content Include="Views\ApplicationAdmin\GetApplications.cshtml" />
+    <Content Include="Views\ApplicationAdmin\DeleteApplication.cshtml" />
+    <Content Include="Views\University\Edit.cshtml" />
+    <Content Include="Views\ApplicationAdmin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

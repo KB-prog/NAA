@@ -4,12 +4,18 @@
     ViewBag.Title = "GetApplications";
 }
 
-<h2>GetApplications</h2>
+<h2 class="stylecontainer">GetApplications</h2>
 
-<p>
+<style>
+    .stylecontainer {
+        margin: 2%;
+    }
+</style>
+
+<p class="stylecontainer">
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table stylecontainer">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Course)

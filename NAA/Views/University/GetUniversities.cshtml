@@ -4,12 +4,18 @@
     ViewBag.Title = "GetUniversities";
 }
 
-<h2>GetUniversities</h2>
+<h2 class="stylecontainer">GetUniversities</h2>
 
-<p>
+<style>
+    .stylecontainer {
+        margin: 2%;
+    }
+</style>
+
+<p class="stylecontainer">
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table stylecontainer">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -24,9 +30,10 @@
             @Html.ActionLink(item.Name, "GetUniversity", new {id = item.UniversityId ,Controller = "University"})
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UniversityId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UniversityId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UniversityId })
+            
+            @Html.ActionLink("Edit", "Edit", new { id = item.UniversityId, Controller = "University" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.UniversityId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.UniversityId })
         </td>
     </tr>
 }

@@ -13,5 +13,6 @@ namespace NAA.Data.IDAO
         IList<Application> GetApplications(NAAContext context);
         Application GetApplication(int id, NAAContext context);
         void AddApplication(Application application, NAAContext context);
+        void DeleteApplication(Application application, NAAContext context);
     }
 }

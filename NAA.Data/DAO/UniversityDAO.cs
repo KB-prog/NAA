@@ -41,5 +41,16 @@ namespace NAA.Data.DAO
             context.Univeristies.Include(g => g.Applications).ToList();
             return context.Univeristies.Find(id);
         }
+
+        public University GetUniversity(Application application, NAAContext context)
+        {
+            context.Univeristies.Include(g => g.Applications).ToList();
+            return context.Univeristies.Find(application);
+        }
+
+        public void RemoveApplicationFromCollection(Application application, University university, NAAContext context)
+        {
+            context.Univeristies.Find(university.UniversityId).Applications.Remove(application);
+        }
     }
 }

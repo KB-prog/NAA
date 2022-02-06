@@ -3,61 +3,70 @@
 @{
     ViewBag.Title = "GetApplications";
 }
+<style>
+    .stylecontainer{
+        margin: 2%;
+    }
+</style>
+<h2 class="stylecontainer"> Your Applications </h2>
+    <p class="stylecontainer">
+        @Html.ActionLink("Create New", "AddApplication", "ApplicationAdmin")
+    </p>
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-danger stylecontainer">
+            <Strong>Error!</Strong> @TempData["AlertMessage"]
+        </div>
+    }
+    <table class="table stylecontainer">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Statement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherContact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherReference)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Offer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Firm)
+            </th>
+            <th></th>
+        </tr>
 
-<h2>GetApplications</h2>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Statement)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherContact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherReference)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Offer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firm)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationID, Controller = "ApplicationAdmin" }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Delete", "DeleteApplication", new { applicationId = item.ApplicationID, Controller = "ApplicationAdmin" }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Course)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Statement)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TeacherContact)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TeacherReference)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Offer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Firm)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Course)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Statement)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeacherContact)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeacherReference)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Offer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Firm)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ApplicationID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ApplicationID })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>

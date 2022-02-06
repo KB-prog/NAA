@@ -14,5 +14,6 @@ namespace NAA.Services.IService
         Application GetApplication(int id);
         void AddApplication(ApplicationUniversityCourse applicationUniversityCourse, string userId);
         IList<Application> GetApplications();
+        void DeleteApplication(int applicationId, string userId);  
     }
 }

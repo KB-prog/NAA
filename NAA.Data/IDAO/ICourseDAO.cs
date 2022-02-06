@@ -13,6 +13,8 @@ namespace NAA.Data.IDAO
         void AddApplicationToCollection(Application application, Course course, NAAContext context);
         Course GetCourse(int id, NAAContext context);
         IList<Course> GetCourses(NAAContext context); 
-        Course GetCourse(Application application, NAAContext context); 
+        Course GetCourse(Application application, NAAContext context);
+        void RemoveApplicationFromCollection(Application application, Course course, NAAContext context);
+
     }
 }

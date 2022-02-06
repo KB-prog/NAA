@@ -51,6 +51,44 @@ namespace NAA.Services.Service
             }
         }
 
+        public void DeleteApplication(int applicationId, string userId)
+        {
+            using (var context = new NAAContext())
+            {
+
+                //Application application = applicationDAO.GetApplication(applicationId, context);
+                //University university = universityDAO.GetUniversity(application, context);
+                //universityDAO.RemoveApplicationFromCollection(application, university, context);
+                //Course course = courseDAO.GetCourse(application, context);
+                //courseDAO.RemoveApplicationFromCollection(application, course, context);
+                //userDAO.RemoveApplicationFromCollection(application, userId, context);
+                //applicationDAO.DeleteApplication(application, context);
+                //context.SaveChanges();
+
+
+                Application application = applicationDAO.GetApplication(applicationId, context);
+                IList<University> ApplicationUniversityList = universityDAO.GetUniversities(context);
+                foreach (University item in ApplicationUniversityList)
+                {
+                    if (item.Applications.Contains(application))
+                    {
+                        item.Applications.Remove(application);
+                    }
+                }
+                IList<Course> courses = courseDAO.GetCourses(context);
+                foreach (Course item in courses)
+                {
+                    if (item.Applications.Contains(application))
+                    {
+                        item.Applications.Remove(application);
+                    }
+                }
+                userDAO.RemoveApplicationFromCollection(application, userId, context);
+                applicationDAO.DeleteApplication(application, context);
+                context.SaveChanges();
+            }
+        }
+
         public Application GetApplication(int id)
         {
             using (var context = new NAAContext())

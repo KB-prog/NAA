@@ -24,6 +24,11 @@ namespace NAA.Data.DAO
             context.Applications.Add(application);
         }
 
+        public void DeleteApplication(Application application, NAAContext context)
+        {
+            context.Applications.Remove(application);
+        }
+
         public Application GetApplication(int id, NAAContext context)
         {
             context.Univeristies.Include(g => g.Applications).ToList();

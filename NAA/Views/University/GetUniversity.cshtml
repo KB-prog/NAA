@@ -4,9 +4,15 @@
     ViewBag.Title = "GetUniversity";
 }
 
-<h2>GetUniversity</h2>
+<h2 class="stylecontainer">GetUniversity</h2>
 
-<div>
+<style>
+    .stylecontainer {
+        margin: 2%;
+    }
+</style>
+
+<div class="stylecontainer">
     <h4>University</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -20,13 +26,13 @@
 
     </dl>
 </div>
-<p>
+<p class="stylecontainer">
     @Html.ActionLink("Edit", "Edit", new { id = Model.UniversityId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
 
-<p>
-    <h2> Applications for @Model.Name</h2>
+<p class="stylecontainer">
+    <h2 class="stylecontainer"> Applications for @Model.Name</h2>
 </p>
 @if (Model.Applications.Count != 0)
 {

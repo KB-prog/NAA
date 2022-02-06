@@ -26,5 +26,20 @@ namespace NAA.Data.DAO
         {
             context.Users.Find(userId).Universities.Add(university);
         }
+
+        public void RemoveApplicationFromCollection(Application application, string userId, NAAContext context)
+        {
+            context.Users.Find(userId).Applications.Remove(application);
+        }
+
+        public void RemoveCourseFromCollection(Course course, string userId, NAAContext context)
+        {
+            context.Users.Find(userId).Courses.Remove(course);
+        }
+
+        public void RemoveUniversityFromCollection(University university, string userId, NAAContext context)
+        {
+            context.Users.Find(userId).Universities.Remove(university);
+        }
     }
 }
