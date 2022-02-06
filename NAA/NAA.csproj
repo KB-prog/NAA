@@ -172,6 +172,7 @@
     <Compile Include="Controllers\Helper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\UniversityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -250,6 +251,10 @@
     <Content Include="Views\ApplicationAdmin\DeleteApplication.cshtml" />
     <Content Include="Views\University\Edit.cshtml" />
     <Content Include="Views\ApplicationAdmin\Edit.cshtml" />
+    <Content Include="Views\Service\GetSHUCourses.cshtml" />
+    <Content Include="Views\Service\GetUniversitiesCourses.cshtml" />
+    <Content Include="Views\Service\GetUniversityCourse.cshtml" />
+    <Content Include="Views\Service\GetShefCourses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -271,6 +276,10 @@
     <ProjectReference Include="..\NAA.Data\NAA.Data.csproj">
       <Project>{c5eb9504-6a05-43a7-8b3b-01d7628b6a4f}</Project>
       <Name>NAA.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NAA.InServices\NAA.InServices.csproj">
+      <Project>{4f30f1fb-abdb-4738-ae50-583397fa3e10}</Project>
+      <Name>NAA.InServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\NAA.Services\NAA.Services.csproj">
       <Project>{f88c354c-f545-4670-9d9a-afda12dbbe16}</Project>

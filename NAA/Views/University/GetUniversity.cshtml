@@ -4,8 +4,6 @@
     ViewBag.Title = "GetUniversity";
 }
 
-<h2 class="stylecontainer">GetUniversity</h2>
-
 <style>
     .stylecontainer {
         margin: 2%;
@@ -27,8 +25,7 @@
     </dl>
 </div>
 <p class="stylecontainer">
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UniversityId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Universities", "GetUniversities", "University")
 </p>
 
 <p class="stylecontainer">

@@ -1,17 +1,23 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2 class="stylecontainer">@ViewBag.Title.</h2>
+<h3 class="stylecontainer">NAA Contact Page</h3>
 
-<address>
-    One Microsoft Way<br />
+<style>
+    .stylecontainer {
+        margin: 2%;
+    }
+</style>
+
+<address class="stylecontainer">
+    One NAA Way<br />
     Redmond, WA 98052-6399<br />
     <abbr title="Phone">P:</abbr>
     425.555.0100
 </address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+<address class="stylecontainer">
+    <strong>Support:</strong>   <a href="mailto:support@naa.com">support@naa.com</a><br />
+    <strong>Courses:</strong> <a href="mailto:courses@naa.com">courses@naa.com</a>
 </address>

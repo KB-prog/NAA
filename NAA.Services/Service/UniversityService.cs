@@ -37,6 +37,14 @@ namespace NAA.Services.Service
             }
         }
 
+        public IList<University> GetUniversitiesCourses()
+        {
+            using (var context = new NAAContext())
+            {
+                return universityDAO.GetUniversitiesCourses(context); 
+            }
+        }
+
         public University GetUniversity(int id)
         {
             using (var context = new NAAContext())

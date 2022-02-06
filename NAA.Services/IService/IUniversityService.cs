@@ -10,6 +10,7 @@ namespace NAA.Services.IService
     public interface IUniversityService
     {
         IList<University> GetUniversities();
+        IList<University> GetUniversitiesCourses(); 
         University GetUniversity(int id);
         IList<Application> GetApplications(int id); 
     }

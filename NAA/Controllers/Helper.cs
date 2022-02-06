@@ -1,4 +1,6 @@
 ﻿using NAA.Data.Models.Domain;
+using NAA.InServices.IService;
+using NAA.InServices.Service;
 using NAA.Services.IService;
 using NAA.Services.Service;
 using System;
@@ -13,12 +15,14 @@ namespace Forest.Controllers
     {
         private IUniversityService universityService;
         private IApplicationService applicationService;
-        private ICourseService courseService; 
+        private ICourseService courseService;
+        IInboundService service;
         public Helper()
         {
             universityService = new UniversityService();
             applicationService = new ApplicationService();
             courseService = new CourseService();
+            service = new InboundService();
         }
          
         public List<SelectListItem> GetUniversityDropDown() 
@@ -39,12 +43,31 @@ namespace Forest.Controllers
                     );
             }
             return universityList;
-        }
-
+        }     
         public List<SelectListItem> GetCourseDropDown() 
         {
             List<SelectListItem> courseList = new List<SelectListItem>();
             IList<Course> courses = courseService.GetCourses();
+
+            foreach (var item in courses)
+            {
+                courseList.Add
+                    (
+                        new SelectListItem()
+                        {
+                            Text = item.Name,
+                            Value = item.CourseID.ToString(),
+                            Selected = (item.Name == (courses[0].Name) ? true : false)
+                        }
+                    );
+            }
+            return courseList;
+        }
+        public List<SelectListItem> GetUniCourseDropDown() 
+        {
+            courseService = (ICourseService)service.GetSHUCourses();
+            List<SelectListItem> courseList = new List<SelectListItem>();
+            IList<Course> courses = (IList<Course>)courseService;
 
             foreach (var item in courses)
             {

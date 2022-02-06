@@ -13,5 +13,6 @@ namespace NAA.Data.Models.Domain
         public int UniversityId { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Application> Applications { get; set; }
+        public virtual ICollection<Course> Courses { get; set; } 
     }
 }

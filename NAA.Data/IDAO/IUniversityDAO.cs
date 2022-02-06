@@ -10,7 +10,8 @@ namespace NAA.Data.IDAO
 {
     public interface IUniversityDAO
     {
-        IList<University> GetUniversities(NAAContext context);  
+        IList<University> GetUniversities(NAAContext context);
+        IList<University> GetUniversitiesCourses(NAAContext context); 
         University GetUniversity(int id, NAAContext context);
         IList<Application> GetApplications(int id, NAAContext context);
         void AddApplicationToCollection(Application application, University university, NAAContext context);

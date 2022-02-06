@@ -1,0 +1,71 @@
+﻿@model IEnumerable<NAA.InServices.ProxyToNAAWebService.SHUCourse>
+
+@{
+    ViewBag.Title = "GetSHUCourses";
+}
+
+<style>
+    .stylecontainer {
+        margin: 2%;
+    }
+</style>
+
+<p class="stylecontainer">
+    @Html.ActionLink("Apply Now", "AddApplication", "ApplicationAdmin")
+</p>
+<table class="table stylecontainer">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CRequirements)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CDegree)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CTarif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CNSS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CRequirements)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CDegree)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CTarif)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNSS)
+        </td>
+        <td>
+            @Html.ActionLink("Apply Now", "AddApplication", "ApplicationAdmin")
+        </td>
+    </tr>
+}
+
+</table>

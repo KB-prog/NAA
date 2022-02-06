@@ -1,0 +1,36 @@
+﻿@model IEnumerable<NAA.Data.Models.Domain.University>
+
+@{
+    ViewBag.Title = "GetUniversitiesCourses";
+}
+
+<style>
+    .stylecontainer {
+        margin: 2%;
+    }
+</style>
+
+<p class="stylecontainer">
+    <h2 class="stylecontainer"> Universities </h2>
+</p>
+<table class="table stylecontainer">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Name)*@
+            @Html.ActionLink(item.Name, "GetUniversityCourse", new { id = item.UniversityId, Controller = "Service" })
+        </td>
+        <td>
+
+        </td>
+    </tr>
+}
+
+</table>

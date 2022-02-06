@@ -4,15 +4,14 @@
     ViewBag.Title = "Log in";
 }
 <style>
-
-    .Login {
+    .stylecontainer {
         margin: 2%;
     }
 </style>
-<div class="Login">
-    <h2>@ViewBag.Title.</h2>
+<div class="stylecontainer">
+    <h2 class="stylecontainer">@ViewBag.Title.</h2>
 </div>
-<div class="row">
+<div class="row stylecontainer">
     <div class="col-md-8">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -45,7 +44,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                        <input type="submit" value="Log in" class="btn btn-info" />
                     </div>
                 </div>
                 <p class="Login">

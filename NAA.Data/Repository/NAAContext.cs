@@ -18,6 +18,7 @@ namespace NAA.Data.Repository
         public DbSet<User> Users { get; set; }
         public DbSet<Application> Applications { get; set; }
         public DbSet<University> Univeristies { get; set; }
-        public DbSet<Course> Courses { get; set; } 
+        public DbSet<Course> Courses { get; set; }
+
     }
 }

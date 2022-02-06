@@ -36,6 +36,12 @@ namespace NAA.Data.DAO
             return context.Univeristies.ToList();
         }
 
+        public IList<University> GetUniversitiesCourses(NAAContext context)  
+        {
+            context.Univeristies.Include(g => g.Courses).ToList();
+            return context.Univeristies.ToList();
+        }
+
         public University GetUniversity(int id, NAAContext context)
         {
             context.Univeristies.Include(g => g.Applications).ToList();

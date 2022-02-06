@@ -4,8 +4,6 @@
     ViewBag.Title = "GetApplications";
 }
 
-<h2 class="stylecontainer">GetApplications</h2>
-
 <style>
     .stylecontainer {
         margin: 2%;
@@ -13,7 +11,7 @@
 </style>
 
 <p class="stylecontainer">
-    @Html.ActionLink("Create New", "Create")
+
 </p>
 <table class="table stylecontainer">
     <tr>
@@ -59,9 +57,7 @@
             @Html.DisplayFor(modelItem => item.Firm)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ApplicationID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ApplicationID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationID }, new { @class = "btn btn-success" })
         </td>
     </tr>
 }

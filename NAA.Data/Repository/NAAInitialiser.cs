@@ -11,12 +11,6 @@ namespace NAA.Data.Repository
     {
         protected override void Seed(NAAContext context)
         {
-            // User user1 = new User() { Name = "Rock" };
-            // Genre genre2 = new Genre() { Name = "pop" };
-            // Genre genre3 = new Genre() { Name = "Country" };
-            // context.Genres.Add(genre1);
-            // context.Genres.Add(genre2);
-            // context.Genres.Add(genre3);
 
             //Creating University Objects
             University university1 = new University() { Name = "Sheffield Hallam University" };
@@ -27,17 +21,19 @@ namespace NAA.Data.Repository
             //Creating Application Objects
             Application application1 = new Application()
             {
-                Course = "Computer Science",
+                Course = "Computing",
                 Statement = "I want to be on this course",
                 TeacherContact = "07125659458",
-                TeacherReference = "Reference"
+                TeacherReference = "Reference",
+                Offer = "Processing"
             };
             Application application2 = new Application()
             {
-                Course = "Software Engineering",
+                Course = "Security",
                 Statement = "I want to be on this Software Engineering course",
                 TeacherContact = "07125659458",
-                TeacherReference = "Reference"
+                TeacherReference = "Reference",
+                Offer = "Processing"
             };
 
             context.Applications.Add(application1);
@@ -46,17 +42,41 @@ namespace NAA.Data.Repository
             //Creating Course Objects
             Course course1 = new Course()
             {
-                Name = "Computer Science",
-                Description = "Learning Programming Fundamentals"
+                Name = "IT",
+                Description = "Information Technology"
             };
             Course course2 = new Course()
             {
-                Name = "Software Engineering",
-                Description = "Creating Enterprise Applications"
+                Name = "Cyber Security",
+                Description = "Develop information security skills"
+            };
+            Course course3 = new Course()
+            {
+                Name = "Security",
+                Description = "Develop information security skills"
+            };
+            Course course4 = new Course()
+            {
+                Name = "Computing",
+                Description = "Build Computing Applications"
+            };
+            Course course5 = new Course()
+            {
+                Name = "Computer Networks",
+                Description = "Build Networks"
+            };
+            Course course6 = new Course()
+            {
+                Name = "Forensics",
+                Description = "All about security"
             };
 
             context.Courses.Add(course1);
             context.Courses.Add(course2);
+            context.Courses.Add(course3);
+            context.Courses.Add(course4);
+            context.Courses.Add(course5);
+            context.Courses.Add(course6);
 
             //Creating User Objects
             User user1 = new User() { UserID = "mo", Name = "Mo", Email = "mo@mo.com" };
