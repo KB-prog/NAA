@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace NAA.Controllers
 {
+    [Authorize(Roles = "University, Staff")]
     public class UniversityController : Controller
     {
         private IUniversityService universityService;
@@ -32,7 +33,7 @@ namespace NAA.Controllers
         {
             return View(universityService.GetUniversity(id));
         }
-
+        
         public ActionResult GetApplications(int id)
         {
             IList<Application> application = universityService.GetApplications(id).ToList();

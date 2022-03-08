@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -29,10 +30,20 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Universities", "GetUniversities", "University")</li>
-                    <li>@Html.ActionLink("Student Application", "GetApplications", "ApplicationAdmin")</li>
-                    <li>@Html.ActionLink("Apply Now", "AddApplication", "ApplicationAdmin")</li>
-                    <li>@Html.ActionLink("University Courses", "GetUniversitiesCourses", "Service")</li>                   
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("University") || User.IsInRole("Staff"))
+                        {
+                            <li>@Html.ActionLink("Universities", "GetUniversities", "University")</li>
+                        }
+                        if (User.IsInRole("Applicant") || User.IsInRole("Staff"))
+                        {
+                            <li>@Html.ActionLink("Student Application", "GetApplications", "ApplicationAdmin")</li>
+                        }
+                    }
+                        <li>@Html.ActionLink("Apply Now", "AddApplication", "ApplicationAdmin")</li>
+                    
+                    <li>@Html.ActionLink("University Courses", "GetUniversitiesCourses", "Service")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     @Html.Partial("_LoginPartial")
                 </ul>
@@ -46,7 +57,7 @@
         <hr />
 
         <footer class="container-fluid text-center">
-            <p>NAA &copy; 2021</p>
+            <p>NAA &copy; 2022</p>
         </footer>
     </div>
 

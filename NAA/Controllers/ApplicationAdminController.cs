@@ -16,6 +16,7 @@ using System.Web.Mvc;
 
 namespace NAA.Controllers
 {
+    [Authorize(Roles = "Applicant, Staff")]
     public class ApplicationAdminController : Controller
     {
         private IApplicationService applicationService;
@@ -41,6 +42,7 @@ namespace NAA.Controllers
             return View();
         }
 
+        
         // GET: ApplicationAdmin/Create
         public ActionResult AddApplication() 
         {
